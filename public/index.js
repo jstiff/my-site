@@ -198,7 +198,7 @@ let presentPast = () => {
       setTimeout(function () {
         document.getElementById("textContainer").innerHTML += PAST_DATA[i];
         console.log(PAST_DATA[i]);
-      }, 0);
+      }, 50 * i);
     })(i);
   }
 };
