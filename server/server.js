@@ -8,13 +8,33 @@ let htmlFile;
 let cssFile;
 let jsFile;
 let pastTxtArray;
-let loaded = 0;
+let futureTxtArray;
+let presentTxtArray;
 
 const htmlPath = path.join(__dirname, "../public/index.html");
 const cssPath = path.join(__dirname, "../public/index.css");
 const jsPath = path.join(__dirname, "../public/index.js");
 const pastTxt = path.join(__dirname, "../public/past.txt");
 const presentTxt = path.join(__dirname, "../public/present.txt");
+const futureTxt = path.join(__dirname, "../public/future.txt");
+
+fs.readFile(futureTxt, "utf-8", (err, data) => {
+  if (err) {
+    console.log("pastTxt file read ERROR", err);
+  }
+  futureTxtArray = data.toString().split("");
+  console.log("PASTtxt,,,,", JSON.stringify(futureTxtArray));
+  fs.appendFile(
+    jsPath,
+    `FUTURE_DATA = ${JSON.stringify(futureTxtArray)};`,
+    (err) => {
+      if (err) {
+        console.log(err);
+      }
+      console.log("WORKED");
+    }
+  );
+});
 
 fs.readFile(presentTxt, "utf-8", (err, data) => {
   if (err) {
