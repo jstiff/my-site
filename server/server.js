@@ -77,8 +77,7 @@ fs.readFile(cssPath, function (err, data) {
     throw err;
   }
   cssFile = data;
-  //   let cssToSend = JSON.stringify(cssFile);
-  //   let cssBuffer = Buffer.from(JSON.parse(cssToSend).data);
+
   console.log("css", cssFile);
 });
 fs.readFile(htmlPath, (err, data) => {
@@ -114,40 +113,5 @@ const server = http.createServer(function (req, res) {
   }
   res.end();
 });
-//   let path = url.parse(req.url, true);
-//   console.log("path", path.query);
-
-//   console.log(`yo...${req.method}...${req.url}`);
-
-//   res.write(poop);
-//   let dataObj = { name: "jason", age: 555, ocupation: "yes" };
-//   let data = JSON.stringify(dataObj);
-
-//   res.end(poop);
 
 server.listen(8000);
-
-// try {
-// 	fs.readFile(pastTxt, "utf-8", (err, data) => {
-// 	  if (err) {
-// 		console.log("pastTxt file read ERROR", err);
-// 	  }
-// 	  pastTxtArray = data.toString().split("");
-// 	  console.log("PASTtxt,,,,", JSON.stringify(pastTxtArray));
-// 	  fs.appendFile(
-// 		jsPath,
-// 		`let past = ${JSON.stringify(pastTxtArray)};`,
-// 		(err) => {
-// 		  if (err) {
-// 			console.log(err);
-// 		  }
-// 		  console.log("WORKED");
-// 		}
-// 	  );
-// 	});
-
-// // 	  fs.appendFileSync("./public/index.js", pastArray, "utf8");
-// //	  console.log("poop yo", pastArray);
-//   } catch (err) {
-// 	console.log("REadFile Error", err);
-//   }
