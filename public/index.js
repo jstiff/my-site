@@ -1,3 +1,153 @@
+PRESENT_DATA = [
+  "I",
+  " ",
+  "a",
+  "m",
+  " ",
+  "c",
+  "u",
+  "r",
+  "r",
+  "e",
+  "n",
+  "t",
+  "l",
+  "y",
+  " ",
+  "w",
+  "o",
+  "r",
+  "k",
+  "i",
+  "n",
+  "g",
+  " ",
+  "o",
+  "n",
+  " ",
+  "a",
+  " ",
+  "g",
+  "i",
+  "t",
+  "h",
+  "u",
+  "b",
+  " ",
+  "A",
+  "p",
+  "i",
+  " ",
+  "a",
+  "p",
+  "p",
+  "l",
+  "i",
+  "c",
+  "a",
+  "t",
+  "i",
+  "o",
+  "n",
+  " ",
+  "t",
+  "h",
+  "a",
+  "t",
+  " ",
+  "a",
+  "l",
+  "l",
+  "o",
+  "w",
+  "s",
+  " ",
+  "u",
+  "s",
+  "e",
+  "r",
+  "s",
+  " ",
+  "t",
+  "o",
+  " ",
+  "p",
+  "r",
+  "a",
+  "c",
+  "t",
+  "i",
+  "c",
+  "e",
+  " ",
+  "t",
+  "y",
+  "p",
+  "i",
+  "n",
+  "g",
+  " ",
+  "o",
+  "v",
+  "e",
+  "r",
+  " ",
+  "c",
+  "o",
+  "d",
+  "e",
+  ".",
+  ".",
+  ".",
+  ".",
+  "\n",
+  "Y",
+  "o",
+  "u",
+  " ",
+  "c",
+  "a",
+  "n",
+  " ",
+  "c",
+  "h",
+  "e",
+  "c",
+  "k",
+  " ",
+  "i",
+  "t",
+  " ",
+  "o",
+  "u",
+  "t",
+  " ",
+  "b",
+  "y",
+  " ",
+  "c",
+  "l",
+  "i",
+  "c",
+  "k",
+  "i",
+  "n",
+  "g",
+  " ",
+  "t",
+  "h",
+  "i",
+  "s",
+  " ",
+  "l",
+  "i",
+  "n",
+  "k",
+  " ",
+  "%",
+  " ",
+];
+
 let PAST_DATA = [
   " ",
   "I",
@@ -191,15 +341,49 @@ let PAST_DATA = [
   ".",
   ".",
 ];
-
+let area = document.getElementById("textContainer");
 let presentPast = () => {
+  area.innerHTML = "";
   for (let i = 0; i < PAST_DATA.length; i++) {
     (function (i) {
       setTimeout(function () {
-        document.getElementById("textContainer").innerHTML += PAST_DATA[i];
+        area.innerHTML += PAST_DATA[i];
         console.log(PAST_DATA[i]);
       }, 50 * i);
     })(i);
+  }
+};
+
+let presentPresent = () => {
+  area.innerHTML = "";
+  let gitHub = `https://github.com/jstiff/Imitate`;
+
+  for (let i = 0; i < PRESENT_DATA.length; i++) {
+    if (PRESENT_DATA[i] === "%") {
+      (function (i) {
+        // let textNode2 = document.createTextNode(gitHub);
+        setTimeout(function () {
+          let a = document.createElement("a");
+          let textNode2 = document.createTextNode(gitHub);
+          a.appendChild(textNode2);
+          a.href = gitHub;
+          area.appendChild(a);
+          //   node.appendChild(textNode2);
+
+          console.log(PRESENT_DATA[i]);
+        }, 50 * i);
+      })(i);
+    } else {
+      (function (i) {
+        setTimeout(function () {
+          let span = document.createElement("SPAN");
+          let textNode = document.createTextNode(PRESENT_DATA[i]);
+          span.appendChild(textNode);
+          area.appendChild(span);
+          console.log(PRESENT_DATA[i]);
+        }, 50 * i);
+      })(i);
+    }
   }
 };
 
@@ -235,13 +419,11 @@ let presentPast = () => {
 //   StartTextAnimation(0);
 
 document.getElementById("past").addEventListener("click", presentPast);
-document.getElementById("present").addEventListener("click", () => {
-  alert("my past has stuff");
-});
+document.getElementById("present").addEventListener("click", presentPresent);
 document.getElementById("future").addEventListener("click", () => {
   alert("my past has stuff");
 });
-const area = document.getElementById("textContainer");
+// const area = document.getElementById("textContainer");
 /////////////////////////////
 
 //////////////////////////////////

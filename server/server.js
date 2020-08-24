@@ -14,27 +14,43 @@ const htmlPath = path.join(__dirname, "../public/index.html");
 const cssPath = path.join(__dirname, "../public/index.css");
 const jsPath = path.join(__dirname, "../public/index.js");
 const pastTxt = path.join(__dirname, "../public/past.txt");
+const presentTxt = path.join(__dirname, "../public/present.txt");
 
-if (loaded < 1) {
-  loaded += 1;
-  fs.readFile(pastTxt, "utf-8", (err, data) => {
-    if (err) {
-      console.log("pastTxt file read ERROR", err);
-    }
-    pastTxtArray = data.toString().split("");
-    console.log("PASTtxt,,,,", JSON.stringify(pastTxtArray));
-    fs.appendFile(
-      jsPath,
-      `PAST_DATA = ${JSON.stringify(pastTxtArray)};`,
-      (err) => {
-        if (err) {
-          console.log(err);
-        }
-        console.log("WORKED");
+fs.readFile(presentTxt, "utf-8", (err, data) => {
+  if (err) {
+    console.log("pastTxt file read ERROR", err);
+  }
+  presentTxtArray = data.toString().split("");
+  console.log("PASTtxt,,,,", JSON.stringify(pastTxtArray));
+  fs.appendFile(
+    jsPath,
+    `PRESENT_DATA = ${JSON.stringify(presentTxtArray)};`,
+    (err) => {
+      if (err) {
+        console.log(err);
       }
-    );
-  });
-}
+      console.log("WORKED");
+    }
+  );
+});
+
+fs.readFile(pastTxt, "utf-8", (err, data) => {
+  if (err) {
+    console.log("pastTxt file read ERROR", err);
+  }
+  pastTxtArray = data.toString().split("");
+  console.log("PASTtxt,,,,", JSON.stringify(pastTxtArray));
+  fs.appendFile(
+    jsPath,
+    `PAST_DATA = ${JSON.stringify(pastTxtArray)};`,
+    (err) => {
+      if (err) {
+        console.log(err);
+      }
+      console.log("WORKED");
+    }
+  );
+});
 
 fs.readFile(cssPath, function (err, data) {
   if (err) {

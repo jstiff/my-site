@@ -37,3 +37,6 @@ li:hover {
   text-align: center;
   background-color: black;
 }
+a:hover {
+  color: red;
+}
